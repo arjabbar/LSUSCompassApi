@@ -1,0 +1,6 @@
+development:
+  compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
+test:
+  compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
+production:
+  compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
