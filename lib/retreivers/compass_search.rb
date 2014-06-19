@@ -1,5 +1,5 @@
 module Retreivers
-  class CompassHome
+  class CompassSearch
     attr_reader :home_page
     delegate :page, :current_page, :visited?, to: :@mechanize
 

@@ -16,7 +16,9 @@ module Scrapers
     end
 
     SELECTORS = {
-      terms: '[name=term] option'
+      terms: '[name=term] option',
+      sessions: '[name=session] option',
+      campuses: '[name=campus] option'
     }
   end
 end

@@ -1,17 +1,9 @@
 module Parsers
-  class Term
+  class Term < Base
     DATE_REGEX = /\d{2}\/\d{2}\/\d{2}/
-    attr_accessor :node
-    def initialize node
-      @node = node
-    end
 
     def term_id
       @term_id ||= node.values.first
-    end
-
-    def text
-      @text ||= node.text.strip
     end
 
     def description
