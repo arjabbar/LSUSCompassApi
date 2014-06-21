@@ -1,5 +1,5 @@
 module Parsers
-  class Campus < Base
+  class CreditType < Base
     alias_method :description, :text
   end
 end
