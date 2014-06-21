@@ -1,13 +1,12 @@
 class SearchResultPageCollection
   attr_accessor :first_result_page, :pages
   def initialize(first_result_page:)
-    debugger
     if first_result_page.is_a? Mechanize::Page
-      self.first_result_page = SearchResultPage.new(page: first_result_page)
+      @first_result_page = SearchResultPage.new(page: first_result_page)
     else
-      self.first_result_page = first_result_page
+      @first_result_page = first_result_page
     end
-    self.pages = [first_result_page]
+    @pages = [@first_result_page]
   end
 
   def grab_all_search_results

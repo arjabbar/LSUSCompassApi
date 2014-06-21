@@ -7,8 +7,12 @@ module Parsers
       node.search('a').first['href']
     end
 
-    def course_id
+    def reference_number
       node['id']
+    end
+
+    def course_id
+      table_cells[2].text
     end
 
     def campus
@@ -51,7 +55,7 @@ module Parsers
       return @days_of_the_week if @days_on_the_week
       return (@days_of_the_week = nil) if days_tba?
       days_array = table_cells[11..17].map do |cell, index|
-        cell.text.match('[A-Z]').blank?
+        cell.text.match('[A-Z]').present?
       end
       .zip(Date::DAYNAMES).flatten.reverse
       @days_of_the_week = Hash[*days_array].map{|k,v| [k.underscore.intern, v]}.to_h

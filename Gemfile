@@ -6,7 +6,7 @@ gem 'pg'
 gem 'sprockets-rails',  github: "rails/sprockets-rails"
 gem 'uglifier', '>= 1.3.0'
 gem 'mechanize'
-gem 'redis'
+gem 'active_model_serializers'
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
