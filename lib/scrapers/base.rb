@@ -6,17 +6,24 @@ module Scrapers
     end
 
     def scrape selector
-      page.search(selectors[selector])
-      .map do |node|
-        parser_class_name = selector.to_s.singularize.camelize
-        parser_class = "Parsers::#{parser_class_name}".safe_constantize
-        raise "There isn't a parser for #{parser_class_name}" if parser_class.blank?
-        parser_class.new node
+      nodes_for(selector).map do |node|
+        parser_class_for(selector).new node
       end
     end
 
     def selectors
       self.class::SELECTORS
+    end
+
+    def nodes_for selector
+      page.search(selectors[selector])
+    end
+
+    def parser_class_for sym
+      parser_class_name = sym.to_s.singularize.camelize
+      parser_class = "Parsers::#{parser_class_name}".safe_constantize
+      raise "There isn't a parser for #{parser_class_name}" if parser_class.blank?
+      parser_class
     end
 
     alias_method :find, :scrape

@@ -26,18 +26,17 @@ module Retreivers
     end
 
     def search_courses(term: term)
-      term = term
       reset_other_form_fields
       @search_result_page_collection = SearchResultPageCollection.new(first_result_page: search_form.submit)
       @search_result_page_collection.grab_all_search_results
       @search_result_page_collection
     end
 
+    private
+
     def scraper
       @scraper ||= Scrapers::CompassHome.new(page: home_page)
     end
-
-    private
 
     def search_form
       home_page.form_with name: 'search'
@@ -47,6 +46,7 @@ module Retreivers
       self.delivery = ''
     end
 
+    alias_method :available_terms, :term_values
     alias_method :find, :available
   end
 end
