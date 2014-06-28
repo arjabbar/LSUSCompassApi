@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0060)https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp -->
+<html data-ember-extension="1"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta http-equiv="X-UA-Compatible" content="IE=5">
+
+
+
+
+<title>LSUS
+ - Schedule of Classes Search</title>
+<meta name="description" content="HETGroup is responsible for development and maintenance
+ of administrative software systems for Colleges in the state of Florida">
+
+<!-- script.inc -->
+<link rel="stylesheet" href="https://compass.lsus.edu/FCCSC/fccsc-style.css">
+
+<script type="text/javascript">
+<!--
+function printWindow(){
+   bV = parseInt(navigator.appVersion)
+   if (bV >= 4) window.print()
+}
+//-->
+</script>
+<!-- /script.inc -->
+</head>
+
+<body data-ember-extension="1" cz-shortcut-listen="true">
+
+<!-- header.inc -->
+<div align="center">
+<img src="./compass_search_home_page_files/header.gif" width="308" height="70">
+</div>
+<!-- /header.inc -->
+
+<!--  sitemenu.inc -->
+
+<meta http-equiv="X-UA-Compatible" content="IE=5">
+
+
+
+
+
+<!-- /sitemenu.inc -->
+
+
+
+	
+
+<div align="center">
+
+
+
+<style type="text/css">
+
+#thisform { 
+    margin: 2px;
+    
+}
+</style>
+
+
+<form method="post" id="thisform" action="https://compass.lsus.edu/FCCSC/navigate/student.jsp">
+      <input type="submit" value="Home">
+</form>
+
+
+
+
+<script type="text/javascript">
+function remove_blanks(item)
+{
+  var tmp = "";
+  var item_length = item.value.length;
+  var item_length_minus_1 = item.value.length - 1;
+  for (index = 0; index < item_length; index++)
+  {
+    if (item.value.charAt(index) != ' ')
+    {
+      tmp += item.value.charAt(index);
+    }
+  }
+	if (item.value.charAt(0) == ' ' && item.value.length == 1) tmp = '';
+  item.value = tmp;
+}
+</script>
+
+<br>
+
+	
+		
+
+
+
+
+
+<table width="700"><tbody><tr><td align="left">
+
+
+
+<div align="left">
+<table class="fccsc-border" cellpadding="2" cellspacing="0">
+	<tbody><tr class="fccsc-tableheading">
+		<td colspan="2" align="center" class="fccsc-headerbar-xs-black-bold">Shopping Cart</td>
+	</tr>
+	<tr class="fccsc-detail-2">
+		<td>
+			<img src="./compass_search_home_page_files/cart.gif">
+		</td>
+		<td class="fccsc-detail-x-small-black">
+			
+			
+			Total Classes in Cart: 0<br>
+			
+			
+			
+			
+			<a href="https://compass.lsus.edu/FCCSC/registration/shoppingcart.jsp">edit / view</a>
+		</td>
+	</tr>
+</tbody></table>
+</div>
+
+
+</td></tr></tbody></table>
+
+
+
+
+<br>
+<table width="700" cellpadding="5" cellspacing="0" border="0">
+  <tbody><tr class="fccsc-headerbar-bg-3">
+    <td align="right" valign="top" class="fccsc-heading-s-black-bold">
+      Search<br>
+      Help:
+    </td>
+    <td align="left" valign="top" class="fccsc-detail-x-small-black">
+    	Enter/select values in any/all of the following fields.
+      	Selecting values for "Days", "Start Time",
+		"End Time", "Course Title" and "Instructor" will result in longer search time.
+		You can select multiple values for the field "Subject Area", by holding down the control
+		(Ctrl) key and selecting the required values.
+    </td>
+  </tr>
+</tbody></table>
+
+
+<form name="search" method="POST" action="https://compass.lsus.edu/FCCSC/servlet/registration.IAS012N2s?from=registration/coursearch.jsp">
+
+<table cellpadding="1" cellspacing="0" border="0">
+  <tbody><tr class="fccsc-headerbar-bg-2">  
+  <td valign="top">
+  
+  <table width="700" cellpadding="5" cellspacing="0" border="0" class="fccsc-lineStyle-bg-2">
+  
+    <tbody><tr class="fccsc-headerbar-bg-2">
+      <td colspan="3" valign="top" align="center" width="700" class="fccsc-headerbar-n-white-bold">
+        Class Schedule - Search by Term
+      </td>
+    </tr>
+    
+    <tr>
+      	<td colspan="3" class="fccsc-headerbar-xs-black-bold">
+      	Directions: Complete only the items for which you are interested in searching.
+      	NO FIELDS ARE REQUIRED.
+      	Press the "Search Now" button to search for classes matching your criteria.
+ 		
+	  	</td>
+	</tr>
+
+    <tr>
+    <td colspan="3">
+    <table cellpadding="5" cellspacing="0" border="0" class="fccsc-lineStyle-bg-2">
+    <tbody><tr>
+    	<td valign="top" width="350" align="center" class="fccsc-headerbar-xs-black-bold">
+    		<input type="submit" class="savebutton" value="Search Now">
+    		for selected course/classes.
+    	</td>
+    	<td valign="top" width="350" align="center" class="fccsc-headerbar-xs-black-bold">
+    		<input type="reset" class="defaultbutton" value="Reset Form">
+    		to original settings.
+    	</td>
+    </tr>
+    <tr>
+    	<td colspan="2"><hr></td>
+    </tr>
+    </tbody></table>
+    </td>
+    </tr>
+    
+    <tr>
+      <td valign="top">
+        <table cellpadding="5" cellspacing="0" border="0">
+          <tbody><tr>
+            <td valign="top" align="right" class="fccsc-headerbar-xs-black-bold">Term:</td>
+            <td align="left" class="fccsc-detail-x-small-black">
+              
+              	<select name="term">
+              		
+              		
+              			<option value="20143">
+              				Summer 2014 : 06/02/14 to 07/30/14
+              			</option>
+              		
+              			<option value="20151">
+              				Fall 2014 : 08/25/14 to 12/13/14
+              			</option>
+              		
+              	</select>
+              
+            </td>
+          </tr>
+          <tr>
+          	<td align="right" class="fccsc-headerbar-xs-black-bold">Session:</td>
+		  	<td align="left" class="fccsc-detail-x-small-black">
+		  		<select name="session">
+		  		<option value="*" selected="">All Sessions
+</option><option value="1">Main Session
+</option><option value="INTR">Inter-Session
+</option><option value="1A">Session 1A
+</option><option value="1B">Session 1B
+</option><option value="1C">ED - Online 1C
+</option><option value="1D">ED - Online 1D
+</option><option value="AP1">Session AP1
+</option><option value="AP2">Session AP2
+
+		  		</option></select>
+		  	</td>
+		  </tr> 
+          <tr>
+            <td align="right" class="fccsc-headerbar-xs-black-bold">Campus:</td>
+            <td align="left" class="fccsc-detail-x-small-black">
+              <select name="campus">
+                <option value="ANY" selected="">Any Campus
+</option><option value="11">LSUS
+</option><option value="21">Off Campus
+
+              </option></select>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+      <td width="10"><br>
+      </td>
+      <td valign="top">
+        <table cellpadding="2" cellspacing="0" border="0">
+          <tbody><tr>
+            <td align="right" class="fccsc-headerbar-xs-black-bold" nowrap="">Class Status:</td>
+            <td align="left" class="fccsc-detail-x-small-black" nowrap="">
+            
+              <select name="classStatus">
+                <option value="A" selected="">All Classes
+</option><option value="C">Cancelled
+</option><option value="F">Full
+</option><option value="H">On-Hold
+</option><option value="O">Open/Available
+</option><option value="U">Unavailable
+
+
+              </option></select>
+            
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold" nowrap="">Credit Type:</td>
+            <td align="left" class="fccsc-detail-x-small-black" nowrap="">
+            	
+            	
+            	<select id="classType" name="classType">
+           
+					<option value="01A">All Types</option>
+<option value="100">Undergraduate</option>
+<option value="200">Graduate</option>
+
+             	</select>
+             	
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="3">
+        <table cellpadding="5" cellspacing="0" border="0">
+          <tbody><tr>
+            <td nowrap="" align="right" valign="top" class="fccsc-headerbar-xs-black-bold">Course Title/ Key Word:</td>
+            <td align="left" colspan="3" class="fccsc-detail-x-small-black">
+              <input size="50" name="courseTitle" maxlength="50"><br>
+              <b>Tip:</b> Type Child or Hist to search for classes with that text in the title or description.
+            </td>
+          </tr>
+          <tr>
+            <td nowrap="" align="right" valign="top" class="fccsc-headerbar-xs-black-bold">Course ID:</td>
+            <td align="left" colspan="3" class="fccsc-detail-x-small-black">
+<!-- LSUSMODS Start -->
+              <input type="text" size="10" maxlength="10" name="course0">
+              <input type="text" size="10" maxlength="10" name="course1">
+              <input type="text" size="10" maxlength="10" name="course2">
+              <input type="text" size="10" maxlength="10" name="course3">
+              <input type="text" size="10" maxlength="10" name="course4">
+<!-- LSUSMODS End  -->
+			  
+              
+			  <br>
+<!-- LSUSMODS Start -->
+              <input type="text" size="10" maxlength="10" name="course5">
+              <input type="text" size="10" maxlength="10" name="course6">
+              <input type="text" size="10" maxlength="10" name="course7">
+              <input type="text" size="10" maxlength="10" name="course8">
+              <input type="text" size="10" maxlength="10" name="course9">
+<!-- LSUSMODS End -->
+			  <br>
+<!-- LSUSMODS Start -->
+		  	  <b>Tip:</b> Type MATH instead of MATH 121, to find all courses starting with "MATH".
+<!-- LSUMODS End -->
+            </td>
+          </tr>
+          
+          
+    	  
+    	  
+          <tr>
+            <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold">Instructor Name:</td>
+            <td align="left" colspan="3" class="fccsc-detail-x-small-black">
+              <input size="25" maxlength="20" name="instructorName"><br>
+              <b>Tip:</b> Search for your favorite instructor! (Example Smith or Jones)
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" align="right" class="fccsc-headerbar-xs-black-bold">
+            	Start Time:
+           	</td>
+            <td align="left" width="1%" class="fccsc-detail-x-small-black">
+              <select name="startTime">
+                <option value="ANY">Any Time
+</option><option value="0000000">Midnight
+</option><option value="0100000">1:00 am
+</option><option value="0200000">2:00 am
+</option><option value="0300000">3:00 am
+</option><option value="0400000">4:00 am
+</option><option value="0500000">5:00 am
+</option><option value="0600000">6:00 am
+</option><option value="0700000">7:00 am
+</option><option value="0800000">8:00 am
+</option><option value="0900000">9:00 am
+</option><option value="1000000">10:00 am
+</option><option value="1100000">11:00 am
+</option><option value="1200000">Midday
+</option><option value="1300000">1:00 pm
+</option><option value="1400000">2:00 pm
+</option><option value="1500000">3:00 pm
+</option><option value="1600000">4:00 pm
+</option><option value="1700000">5:00 pm
+</option><option value="1800000">6:00 pm
+</option><option value="1900000">7:00 pm
+</option><option value="2000000">8:00 pm
+</option><option value="2100000">9:00 pm
+</option><option value="2200000">10:00 pm
+</option><option value="2300000">11:00 pm
+
+
+              </option></select>
+            </td>
+            <td valign="top" align="right" class="fccsc-headerbar-xs-black-bold">
+            	End Time:
+            </td>
+            <td align="left" class="fccsc-detail-x-small-black">
+              <select name="endTime">
+                <option value="ANY">Any Time
+</option><option value="0000000">Midnight
+</option><option value="0100000">1:00 am
+</option><option value="0200000">2:00 am
+</option><option value="0300000">3:00 am
+</option><option value="0400000">4:00 am
+</option><option value="0500000">5:00 am
+</option><option value="0600000">6:00 am
+</option><option value="0700000">7:00 am
+</option><option value="0800000">8:00 am
+</option><option value="0900000">9:00 am
+</option><option value="1000000">10:00 am
+</option><option value="1100000">11:00 am
+</option><option value="1200000">Midday
+</option><option value="1300000">1:00 pm
+</option><option value="1400000">2:00 pm
+</option><option value="1500000">3:00 pm
+</option><option value="1600000">4:00 pm
+</option><option value="1700000">5:00 pm
+</option><option value="1800000">6:00 pm
+</option><option value="1900000">7:00 pm
+</option><option value="2000000">8:00 pm
+</option><option value="2100000">9:00 pm
+</option><option value="2200000">10:00 pm
+</option><option value="2300000">11:00 pm
+
+
+              </option></select>
+            </td>
+          </tr>
+		  <tr>
+            <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold">
+            	Days:
+            </td>
+            <td align="left" class="fccsc-detail-x-small-black">
+              <input type="checkbox" name="days" value="M">Monday<br>
+              <input type="checkbox" name="days" value="T">Tuesday<br>
+              <input type="checkbox" name="days" value="W">Wednesday<br>
+              <input type="checkbox" name="days" value="R">Thursday<br>
+              <input type="checkbox" name="days" value="F">Friday<br>
+              <input type="checkbox" name="days" value="S">Saturday<br>
+              <input type="checkbox" name="days" value="U">Sunday
+            </td>
+            <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold">Day Type:</td>
+            <td align="left" valign="top" class="fccsc-detail-x-small-black">
+				<input type="radio" name="dayType" value="A" checked="checked">Any Combination of Days<br>
+				<input type="radio" name="dayType" value="O">Only Selected Days<br>
+            </td>
+          </tr>
+		  <tr>
+             <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold">
+            	Alternative<br>
+              	Instructional<br>
+              	Method:
+             </td>
+             <td align="left" colspan="3" class="fccsc-detail-x-small-black">
+               <select name="delivery" size="7">
+                 <option value="OL,B3,B2,B1">All Courses with an Online Component</option>  
+<option value="OL">100% Online Usage</option>
+<option value="B3">95% Online Usage</option>
+<option value="B2">50% Or More Online Usage</option>
+<option value="B1">Online Supplemented Class</option>
+<option value="DL">Distance Learning</option>  
+<option value="C1">Compressed Video (Local)</option>
+<option value="C2">Compressed Video (Far Site)</option>
+<option value="TC">Telecourses</option> 
+
+               </select>
+             </td>
+		  </tr>
+          <tr>
+              <td align="right" valign="top" class="fccsc-headerbar-xs-black-bold">
+              	Subject Area:
+              </td>
+              <td valign="top" align="left" colspan="3" class="fccsc-detail-x-small-black">
+<!-- LSUSMODS Start -->
+                <select name="subjectArea" multiple="" size="5">
+                  <option value="01">Accounting
+</option><option value="02">Agriculture
+</option><option value="03">American Studies
+</option><option value="04">Anthropology
+</option><option value="05">Astronomy
+</option><option value="06">Biochemistry And Molecular Biology
+</option><option value="07">Biological Sciences
+</option><option value="08">Business Administration
+</option><option value="09">Business Law
+</option><option value="10">Chemistry
+</option><option value="11">Communications
+</option><option value="12">Communication Disorders
+</option><option value="13">Computer Science
+</option><option value="14">Computer Systems Technology
+</option><option value="15">Criminal Justice
+</option><option value="16">Economics
+</option><option value="17">Education
+</option><option value="18">Engineering
+</option><option value="19">English
+</option><option value="20">Environmental Science
+</option><option value="21">European Literature
+</option><option value="22">Finance
+</option><option value="23">Fine Arts
+</option><option value="24">Foreign Languages
+</option><option value="25">French
+</option><option value="26">General Studies
+</option><option value="27">Geography
+</option><option value="28">Geology
+</option><option value="29">German
+</option><option value="30">Health Administration
+</option><option value="31">Health And Physical Education
+</option><option value="32">History
+</option><option value="33">Human Services Administration
+</option><option value="34">Humanities
+</option><option value="35">India Studies
+</option><option value="36">Info Systems/Decision Sciences
+</option><option value="37">International Studies
+</option><option value="38">Kinesiology &amp; Health Sciences
+</option><option value="39">Leadership
+</option><option value="40">Liberal Arts
+</option><option value="41">Library Science
+</option><option value="42">Management And Administration
+</option><option value="43">Marketing
+</option><option value="44">Mass Communications
+</option><option value="45">Mathematics
+</option><option value="46">Mathematics Education
+</option><option value="47">Military Science
+</option><option value="48">Music
+</option><option value="49">Philosophy
+</option><option value="50">Physical Science
+</option><option value="51">Physics
+</option><option value="52">Political Science
+</option><option value="53">Psychology
+</option><option value="54">Religious Studies
+</option><option value="55">Sciences
+</option><option value="56">Social Welfare
+</option><option value="57">Sociology
+</option><option value="58">Spanish
+</option><option value="59">University Work Service
+</option><option value="60">Women's Studies
+</option><option value="61">Educational Leadership
+</option><option value="99">Unspecified Subject Area
+
+                </option></select>
+
+              </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+    
+    <tr>
+    <td colspan="3">
+    <table cellpadding="5" cellspacing="0" border="0" class="fccsc-lineStyle-bg-2">
+    <tbody><tr>
+    	<td colspan="2"><hr></td>
+    </tr>
+    <tr>
+    	<td valign="top" width="350" align="center" class="fccsc-headerbar-xs-black-bold">
+    		<input type="submit" class="savebutton" value="Search Now">
+    		for selected course/classes.
+    	</td>
+    	<td valign="top" width="350" align="center" class="fccsc-headerbar-xs-black-bold">
+    		<input type="reset" class="defaultbutton" value="Reset Form">
+    		to original settings.
+    	</td>
+    </tr>
+    </tbody></table>
+    </td>
+    </tr>
+
+  </tbody></table>
+  </td>
+  </tr>
+  
+</tbody></table>
+
+</form>
+
+
+</div>
+
+
+<br>
+
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+
+<tbody><tr> 
+
+<td widht="35%"><font face="Arial, Helvetica, sans-serif" size="-2">
+<br>A Member of the LSU System<br>
+LSUS is an Equal Opportunity Educator and Employer<br></font>
+</td>
+<td width="30%" valign="top" height="76" align="center"> <font face="Arial, Helvetica, sans-serif" size="-2"> 
+<br>
+Louisiana State University Shreveport<br> 
+One University Place<br>
+Shreveport, LA 711115<br><br>
+(800) 229-5957 (318) 797-5000<br>
+</font>
+</td>
+<td width="35%">&nbsp;
+</td></tr>
+</tbody></table>
+
+<!--=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=---=-=-=-=-=-=-=-=-=-
+
+         Imenus Script File Reference
+
+         *Note: The following script pointer should appear directly
+                before your documents closing body tag.
+
+=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=---=-=-=-=-=-=-=-=-=-=-=-->
+
+
+
+
+<script type="text/javascript" src="chrome-extension://bmdblncegkenkacieihfhpjfppoconhi/in-page-script.js"></script><div id="chrome_websiteIP" class="chrome_websiteIP_right">198.182.205.73</div><div id="naptha_container09217062014"></div></body></html>

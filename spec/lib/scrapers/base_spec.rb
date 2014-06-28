@@ -15,7 +15,7 @@ describe Scrapers::Base do
 
   describe '#scrape' do
     before do
-      expect(scraper).to receive(:nodes_for).and_return nodes
+      expect(scraper).to receive(:nodes_for).with(selector_key).and_return nodes
     end
     it 'creates an array of parsers from the selector' do
       result = scraper.scrape selector_key
