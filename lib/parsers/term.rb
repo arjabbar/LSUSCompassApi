@@ -1,6 +1,7 @@
 module Parsers
   class Term < Base
     DATE_REGEX = /\d{2}\/\d{2}\/\d{2}/
+    DATE_FORMAT = '%m/%d/%Y'
 
     def term_id
       @term_id ||= node.values.first
@@ -11,11 +12,11 @@ module Parsers
     end
 
     def from_date
-      dates.first
+      Date.strptime dates.first, DATE_FORMAT
     end
 
     def to_date
-      dates.last
+      Date.strptime dates.last, DATE_FORMAT
     end
 
     private
