@@ -1,5 +1,5 @@
 module Parsers
-  class CourseRow < Base
+  class Course < Base
     DATE_FORMAT = '%m/%d/%Y'
     TIME_FORMAT = '%H:%M %p'
 

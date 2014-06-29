@@ -9,9 +9,9 @@ module Parsers
       total_coureses_text.to_i
     end
 
-    def course_row_parsers
+    def course_parsers
       node.search(COURSE_ROW_SELECTOR).map do |child_node|
-        CourseRow.new child_node
+        Course.new child_node
       end
     end
   end
