@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Parsers::Course, type: :parser do
+describe Parsers::Lecture, type: :parser do
   
-  let(:page) { TestFixtures.course_search_result_page }
+  let(:page) { TestFixtures.lecture_search_result_page }
   let(:scraper) { Scrapers::SearchResultPage.new page: page }
   let(:search_result) { scraper.scrape(:search_results).first }
-  subject(:parser) { search_result.course_parsers.first }
+  subject(:parser) { search_result.lecture_parsers.first }
 
   describe '#details_link' do
     its(:details_link) { should be_present }
@@ -15,8 +15,8 @@ describe Parsers::Course, type: :parser do
     its(:reference_number) { should be_present }
   end
 
-  describe '#course_id' do
-    its(:course_id) { should be_present }
+  describe '#lecture_id' do
+    its(:lecture_id) { should be_present }
   end
 
   describe '#campus' do

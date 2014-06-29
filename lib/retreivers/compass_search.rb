@@ -25,11 +25,11 @@ module Retreivers
       Scrapers::CompassSearch::SELECTORS.keys
     end
 
-    def search_all_courses
-      available_terms.map { |term| search_courses term: term }
+    def search_all_lectures
+      available_terms.map { |term| search_lectures term: term }
     end
 
-    def search_courses(term: term)
+    def search_lectures(term: term)
       reset_other_form_fields
       self.term = term
       create_page_collection(first_page: search_form.submit)

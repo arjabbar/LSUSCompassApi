@@ -1,5 +1,5 @@
 module Parsers
-  class Course < Base
+  class Lecture < Base
     DATE_FORMAT = '%m/%d/%Y'
     TIME_FORMAT = '%H:%M %p'
 
@@ -11,7 +11,7 @@ module Parsers
       node['id']
     end
 
-    def course_id
+    def lecture_id
       table_cells[2].text
     end
 
