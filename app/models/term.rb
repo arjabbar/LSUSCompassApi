@@ -1,3 +1,2 @@
-class Term
-  
+class Term < ActiveRecord::Base
 end
