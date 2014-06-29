@@ -14,5 +14,7 @@ module Parsers
         Course.new child_node
       end
     end
+
+    alias_method :courses, :course_parsers
   end
 end

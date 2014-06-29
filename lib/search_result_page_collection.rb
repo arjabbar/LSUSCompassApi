@@ -1,5 +1,8 @@
 class SearchResultPageCollection
+  include Enumerable
+  delegate :each, to: :@pages
   attr_accessor :first_result_page, :pages
+  
   def initialize(first_result_page:)
     if first_result_page.is_a? Mechanize::Page
       @first_result_page = SearchResultPage.new(page: first_result_page)

@@ -25,9 +25,18 @@ module Retreivers
       Scrapers::CompassSearch::SELECTORS.keys
     end
 
+    def search_all_courses
+      available_terms.map { |term| search_courses term: term }
+    end
+
     def search_courses(term: term)
       reset_other_form_fields
-      @search_result_page_collection = SearchResultPageCollection.new(first_result_page: search_form.submit)
+      self.term = term
+      create_page_collection(first_page: search_form.submit)
+    end
+
+    def create_page_collection(first_page:)
+      @search_result_page_collection = SearchResultPageCollection.new(first_result_page: first_page)
       @search_result_page_collection.grab_all_search_results
       @search_result_page_collection
     end
