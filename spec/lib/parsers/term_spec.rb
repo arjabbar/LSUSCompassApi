@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Parsers::Term, type: :parser do
 
   let(:page) { TestFixtures.compass_search_home_page }
-  let(:scraper) { Scrapers::CompassHome.new page: page }
+  let(:scraper) { Scrapers::CompassSearch.new page: page }
   subject(:parser) { scraper.scrape(:terms).first }
 
   describe '#term_id' do

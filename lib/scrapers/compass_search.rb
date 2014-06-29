@@ -1,5 +1,5 @@
 module Scrapers
-  class CompassHome < Base
+  class CompassSearch < Base
 
     SELECTORS = {
       terms: '[name=term] option',

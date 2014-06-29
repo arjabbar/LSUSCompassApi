@@ -13,7 +13,7 @@ module Retreivers
     end
 
     def available(key)
-      raise "There isn't a selector defined for key #{key}" unless available_keys.include? key 
+      raise "There isn't a selector defined for key #{key}" unless key.in? available_keys 
       scraper.find key
     end
 
@@ -22,7 +22,7 @@ module Retreivers
     end
 
     def available_keys
-      Scrapers::CompassHome::SELECTORS.keys
+      Scrapers::CompassSearch::SELECTORS.keys
     end
 
     def search_courses(term: term)
@@ -35,7 +35,7 @@ module Retreivers
     private
 
     def scraper
-      @scraper ||= Scrapers::CompassHome.new(page: home_page)
+      @scraper ||= Scrapers::CompassSearch.new(page: home_page)
     end
 
     def search_form
