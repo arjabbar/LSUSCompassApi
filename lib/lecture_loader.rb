@@ -36,7 +36,9 @@ class LectureLoader
         start_date: lecture_parser.start_date,
         end_date: lecture_parser.end_date,
         start_time: lecture_parser.start_time,
-        end_time: lecture_parser.end_time
+        end_time: lecture_parser.end_time,
+        seats_left: lecture_parser.seats_left,
+        professor: Professor.find_or_create_by(first_name: lecture_parser.professor)
     rescue
       binding.pry
     end
