@@ -11,7 +11,7 @@ module Parsers
       node['id']
     end
 
-    def lecture_id
+    def course_code
       table_cells[2].text
     end
 
@@ -67,6 +67,10 @@ module Parsers
 
     def professor
       table_cells[19].text
+    end
+
+    def is_valid_lecture?
+      !is_info_box? && !is_special_designator?
     end
 
     def is_info_box?

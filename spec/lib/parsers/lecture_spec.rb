@@ -15,8 +15,8 @@ describe Parsers::Lecture, type: :parser do
     its(:reference_number) { should be_present }
   end
 
-  describe '#lecture_id' do
-    its(:lecture_id) { should be_present }
+  describe '#course_code' do
+    its(:course_code) { should be_present }
   end
 
   describe '#campus' do

@@ -8,3 +8,4 @@ script: "bundle exec rspec spec/"
 deploy:
   provider: heroku
   api_key: "f4daee49-05d3-498f-946a-314aa8d94c52"
+  app: 'lsus-compass-api.herokuapp.com'

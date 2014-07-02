@@ -7,6 +7,7 @@ gem 'sprockets-rails',  github: "rails/sprockets-rails"
 gem 'uglifier', '>= 1.3.0'
 gem 'mechanize'
 gem 'active_model_serializers'
+gem 'colorize'
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
