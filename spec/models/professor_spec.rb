@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Professor do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "it's validations" do
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+  end
 end

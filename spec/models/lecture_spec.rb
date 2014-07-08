@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Lecture do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "it's validations" do
+    it { should validate_presence_of(:reference_number) }
+  end
 end

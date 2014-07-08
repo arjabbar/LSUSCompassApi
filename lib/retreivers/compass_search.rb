@@ -3,7 +3,6 @@ module Retreivers
     attr_reader :home_page
     attr_accessor :search_result_page_collection
     delegate :page, :current_page, :visited?, to: :@mechanize
-    delegate :term=, :delivery=, to: :search_form
 
     def initialize
       super
@@ -21,17 +20,21 @@ module Retreivers
       available(:terms).map(&:value)
     end
 
+    def term_parsers
+      self.available :terms
+    end
+
     def available_keys
       Scrapers::CompassSearch::SELECTORS.keys
     end
 
     def search_all_lectures
-      available_terms.map { |term| search_lectures term: term }
+      term_values.map { |term| search_lectures term: term }
     end
 
     def search_lectures(term: term)
       reset_other_form_fields
-      self.term = term
+      search_form.term = term
       create_page_collection(first_page: search_form.submit)
     end
 
@@ -52,10 +55,9 @@ module Retreivers
     end
 
     def reset_other_form_fields
-      self.delivery = ''
+      search_form.delivery = ''
     end
 
-    alias_method :available_terms, :term_values
     alias_method :find, :available
   end
 end

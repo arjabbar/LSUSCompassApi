@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702012337) do
+ActiveRecord::Schema.define(version: 20140708015913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,6 @@ ActiveRecord::Schema.define(version: 20140702012337) do
   end
 
   create_table "lectures", force: true do |t|
-    t.time     "start_time"
-    t.time     "end_time"
-    t.date     "start_date"
-    t.date     "end_date"
     t.string   "details_url"
     t.string   "session"
     t.string   "room"
@@ -45,16 +41,24 @@ ActiveRecord::Schema.define(version: 20140702012337) do
     t.string   "reference_number"
     t.integer  "class_size"
     t.integer  "enrolled"
-    t.integer  "professor_id"
     t.integer  "course_id"
-    t.integer  "days_of_the_week_id"
     t.string   "campus"
     t.integer  "seats_left"
+    t.integer  "term_id"
   end
 
   add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
-  add_index "lectures", ["days_of_the_week_id"], name: "index_lectures_on_days_of_the_week_id", using: :btree
-  add_index "lectures", ["professor_id"], name: "index_lectures_on_professor_id", using: :btree
+  add_index "lectures", ["term_id"], name: "index_lectures_on_term_id", using: :btree
+
+  create_table "lectures_professors", force: true do |t|
+    t.integer  "lecture_id"
+    t.integer  "professor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lectures_professors", ["lecture_id"], name: "index_lectures_professors_on_lecture_id", using: :btree
+  add_index "lectures_professors", ["professor_id"], name: "index_lectures_professors_on_professor_id", using: :btree
 
   create_table "professors", force: true do |t|
     t.string   "first_name"
@@ -63,11 +67,35 @@ ActiveRecord::Schema.define(version: 20140702012337) do
     t.datetime "updated_at"
   end
 
+  create_table "schedule_days", force: true do |t|
+    t.integer  "schedule_id"
+    t.integer  "day_of_the_week_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedule_days", ["day_of_the_week_id"], name: "index_schedule_days_on_day_of_the_week_id", using: :btree
+  add_index "schedule_days", ["schedule_id"], name: "index_schedule_days_on_schedule_id", using: :btree
+
+  create_table "schedules", force: true do |t|
+    t.time     "start_time"
+    t.time     "end_time"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "lecture_id"
+  end
+
+  add_index "schedules", ["lecture_id"], name: "index_schedules_on_lecture_id", using: :btree
+
   create_table "terms", force: true do |t|
     t.string   "dom_value"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
 end

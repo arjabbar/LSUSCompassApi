@@ -11,7 +11,7 @@ module Parsers
 
     def lecture_parsers
       node.search(LECTURE_ROW_SELECTOR).map do |child_node|
-        Lecture.new child_node
+        LectureDetails.new child_node
       end
     end
 

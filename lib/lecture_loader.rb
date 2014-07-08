@@ -1,54 +1,95 @@
 class LectureLoader
-  attr_accessor :errored_entities
+  attr_accessor :exceptions
+
   def initialize
-    @errored_entities = []
+    @exceptions = []
   end
 
   def load!
     puts "Loading compass search results".green
     retreiver = Retreivers::CompassSearch.new
+    retreiver.available_terms.each do |term_parser|
+      load_term term_parser: term_parser
+    end
     result_page_collections = retreiver.search_all_lectures
-    result_page_collections.each do |page_collection|
-      load_page_collection page_collection
+    result_page_collections.each do |collection|
+      load_page_collection(page_collection: collection)
     end
   end
 
-  def load_page_collection page_collection
+  def load_page_collection(page_collection:)
     page_collection.each do |search_result_page|
-      search_result_parser = search_result_page.search_result
-      lecture_parsers = search_result_parser.lecture_parsers
-      lecture_parsers
-      .select(&:is_valid_lecture?)
-      .each do |lecture|
-        load_lecture lecture
+      load_search_result_page(page: search_result_page)
+    end
+  end
+
+  def load_search_result_page(page:)
+    search_result_parser = page.search_result
+    lecture_parsers = search_result_parser.lecture_parsers
+    lecture_parsers
+    .each do |lecture_parser|
+      begin
+        load_lecture_details lecture_parser: lecture_parser
+      rescue ActiveRecord::Rollback => ex
+        exceptions << ex
       end
     end
   end
 
-  def load_lecture lecture_parser
-    begin
-      load_entity Lecture,
-        building:         lecture_parser.building,
+  def load_lecture_details(lecture_parser:)
+    if lecture_parser.is_valid_lecture?
+      load_lecture lecture_parser: lecture_parser
+    elsif lecture_parser.is_schedule_only?
+      load_lecture_schedule lecture_parser: lecture_parser
+    end
+  end
+
+  def load_lecture(lecture_parser:)
+    Lecture.transaction do
+      lecture = Lecture.find_or_initialize_by reference_number: lecture_parser.reference_number
+
+      lecture.schedules.destroy_all
+
+      lecture.assign_attributes building: lecture_parser.building,
         room:             lecture_parser.room,
         details_url:      lecture_parser.details_link,
         reference_number: lecture_parser.reference_number,
         course:           Course.find_or_create_by(code: lecture_parser.course_code),
         campus:           lecture_parser.campus,
         session:          lecture_parser.session,
-        start_date:       lecture_parser.start_date,
-        end_date:         lecture_parser.end_date,
-        start_time:       lecture_parser.start_time,
-        end_time:         lecture_parser.end_time,
-        seats_left:       lecture_parser.seats_left,
-        professor:        Professor.find_or_create_by(first_name: lecture_parser.professor)
-    rescue Exception => ex
-      binding.pry
+        seats_left:       lecture_parser.seats_left
+
+      load_lecture_professor lecture: lecture,
+        first_name: lecture_parser.professor_first_name,
+        last_name: lecture_parser.professor_last_name
+
+      load_lecture_schedule lecture: lecture,
+        lecture_parser: lecture_parser
+
+      lecture.save
     end
   end
 
-  def load_entity entity_class, attrtibutes
-    puts "Loading #{entity_class}".blue
-    entity = entity_class.new attrtibutes
-    errored_entities << entity unless entity.save
+  def load_lecture_schedule(lecture: nil, lecture_parser:)
+    Schedule.transaction do
+      lecture ||= Lecture.find_or_create_by reference_number: lecture_parser.reference_number
+      schedule = Schedule
+      .new(start_time: lecture_parser.start_time,
+           end_time: lecture_parser.end_time,
+           start_date: lecture_parser.start_date,
+           end_date: lecture_parser.end_date)
+      unless lecture_parser.days_tba?
+        schedule.day_of_the_weeks = DayOfTheWeek.where(name: lecture_parser.days_of_the_week)
+      end
+      lecture.schedules << schedule
+    end
   end
+
+  def load_lecture_professor(lecture:, first_name:, last_name:)
+    professor = Professor
+    .find_or_create_by(first_name: first_name,
+                       last_name: last_name)
+    lecture.professors << professor if professor.valid?
+  end
+
 end
