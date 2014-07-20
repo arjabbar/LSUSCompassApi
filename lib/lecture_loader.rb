@@ -1,20 +1,36 @@
 class LectureLoader
-  attr_accessor :exceptions
+  attr_accessor :errors
 
   def initialize
-    @exceptions = []
+    @errors = []
+  end
+
+  def retreiver
+    @retreiver ||= Retreivers::CompassSearch.new
+  end
+
+  def load_terms!
+    retreiver.available_terms.each do |term_parser|
+      load_term term_parser: term_parser
+    end
   end
 
   def load!
     puts "Loading compass search results".green
-    retreiver = Retreivers::CompassSearch.new
-    retreiver.available_terms.each do |term_parser|
-      load_term term_parser: term_parser
-    end
+    load_terms!
     result_page_collections = retreiver.search_all_lectures
     result_page_collections.each do |collection|
       load_page_collection(page_collection: collection)
     end
+  end
+
+  def load_term(term_parser:)
+    term = Term.find_or_initialize_by dom_value: term_parser.dom_value
+    term.assign_attributes start_date: term_parser.start_date,
+      end_date: term_parser.end_date,
+      description: term_parser.description
+    errors << term unless term.save
+    term
   end
 
   def load_page_collection(page_collection:)
@@ -31,7 +47,7 @@ class LectureLoader
       begin
         load_lecture_details lecture_parser: lecture_parser
       rescue ActiveRecord::Rollback => ex
-        exceptions << ex
+        errors << ex
       end
     end
   end

@@ -16,8 +16,12 @@ module Retreivers
       scraper.find key
     end
 
+    def available_terms
+      available(:terms)
+    end
+
     def term_values
-      available(:terms).map(&:value)
+      available_terms.map(&:value)
     end
 
     def term_parsers

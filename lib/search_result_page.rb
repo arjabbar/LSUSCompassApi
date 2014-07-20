@@ -1,5 +1,5 @@
 class SearchResultPage
-  attr_accessor :pagez
+  attr_accessor :page
 
   def initialize(page: page)
     @page = page
