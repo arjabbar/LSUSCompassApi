@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Retreivers::CompassSearch, type: :retreiver do
   
-  let(:retreiver) { described_class.new }
+  let(:retreiver) { Retreivers::CompassSearch.new }
 
   describe '#available' do
     let(:scraper) { double "Scraper" }
-    let(:key) { :test }
+    let(:key)     { :test }
     before do
       retreiver.stub(:scraper).and_return scraper
       expect(retreiver).to receive(:available_keys).and_return available_keys

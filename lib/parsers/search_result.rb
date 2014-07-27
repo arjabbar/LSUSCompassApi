@@ -3,6 +3,7 @@ module Parsers
     TOTAL_LECTURES_REGEX = /\d{1,}/
     TOTAL_LECTURES_SELECTOR = 'h3:contains("Found")'
     LECTURE_ROW_SELECTOR = 'tr[id]'
+    
     def total_lectures
       total_lectures_node = node.search(TOTAL_LECTURES_SELECTOR).first
       total_coureses_text = total_lectures_node.text.match(TOTAL_LECTURES_REGEX).to_s

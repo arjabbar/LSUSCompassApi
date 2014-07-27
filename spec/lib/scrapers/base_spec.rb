@@ -4,7 +4,7 @@ describe Scrapers::Base do
   
   let(:page) { double }
   let(:element_selector) { 'div' }
-  let(:scraper) { described_class.new page: page }
+  let(:scraper) { Scrapers::Base.new page: page }
   let(:selector_key) { :terms }
   let(:selectors) { { selector_key => element_selector } }
   let(:nodes) { [double] }

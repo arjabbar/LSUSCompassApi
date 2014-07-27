@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  namespace :api do
+    namespace :v1 do
+      resources :lectures, :terms, :courses, :professors, only: :index
+    end
+  end
+  
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

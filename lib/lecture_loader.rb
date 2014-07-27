@@ -1,9 +1,4 @@
-class LectureLoader
-  attr_accessor :errors
-
-  def initialize
-    @errors = []
-  end
+class LectureLoader < Loader
 
   def retreiver
     @retreiver ||= Retreivers::CompassSearch.new
@@ -42,8 +37,7 @@ class LectureLoader
   def load_search_result_page(page:)
     search_result_parser = page.search_result
     lecture_parsers = search_result_parser.lecture_parsers
-    lecture_parsers
-    .each do |lecture_parser|
+    lecture_parsers.each do |lecture_parser|
       begin
         load_lecture_details lecture_parser: lecture_parser
       rescue ActiveRecord::Rollback => ex

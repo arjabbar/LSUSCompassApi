@@ -1,13 +1,10 @@
 module Retreivers
   class CompassSearch
-    attr_reader :home_page
     attr_accessor :search_result_page_collection
     delegate :page, :current_page, :visited?, to: :@mechanize
 
     def initialize
       super
-      @mechanize = Mechanize.new
-      @home_page = @mechanize.get Settings::COMPASS_HOME
       @search_result_pages = []
     end
 
@@ -46,6 +43,14 @@ module Retreivers
       @search_result_page_collection = SearchResultPageCollection.new(first_result_page: first_page)
       @search_result_page_collection.grab_all_search_results
       @search_result_page_collection
+    end
+
+    def home_page
+      @home_page ||= browser.get Settings::COMPASS_HOME
+    end
+
+    def browser
+      @browser ||= Mechanize.new
     end
 
     private
