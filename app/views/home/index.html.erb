@@ -1,2 +1,4 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div>Routes</div>
+<% Rails.application.routes.routes.select{|x| x.path.spec.to_s.include? 'api'}.each do |route| %>
+<div><%= link_to route.path.spec.to_s.gsub(/\(.*\)/, ''), route.path.spec.to_s.gsub(/\(.*\)/, '') %></div>
+<% end %>
