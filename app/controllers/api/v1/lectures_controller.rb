@@ -1,20 +1,29 @@
-class API::V1::LecturesController < ApplicationController
-  def index
-    render json: lectures, each_serializer: API::V1::LectureSerializer
-  end
+module API::V1
+  class LecturesController < APIController
+    def index
+      render json: filtered_lectures, each_serializer: API::V1::LectureSerializer
+    end
 
-  private
+    private
 
-  def lectures
-    return Lecture.all unless term
-    term.lectures
-  end
+    def filtered_lectures
+      lectures.with_course_or_professor_like search_query
+    end
 
-  def term
-    Term.find_by id: lecture_params[:term_id]
-  end
+    def lectures
+      term.lectures
+    end
 
-  def lecture_params
-    params.permit :term_id
+    def term
+      Term.find_by id: term_id
+    end
+
+    def term_id
+      params.require(:term_id)
+    end
+
+    def search_query
+      params[:query]
+    end
   end
 end

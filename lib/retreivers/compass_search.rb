@@ -1,5 +1,5 @@
 module Retreivers
-  class CompassSearch
+  class CompassSearch < Base
     attr_accessor :search_result_page_collection
     delegate :page, :current_page, :visited?, to: :@mechanize
 
@@ -49,15 +49,7 @@ module Retreivers
       @home_page ||= browser.get Settings::COMPASS_HOME
     end
 
-    def browser
-      @browser ||= Mechanize.new
-    end
-
     private
-
-    def scraper
-      @scraper ||= Scrapers::CompassSearch.new(page: home_page)
-    end
 
     def search_form
       home_page.form_with name: 'search'

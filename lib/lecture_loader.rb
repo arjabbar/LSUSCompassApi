@@ -62,7 +62,7 @@ class LectureLoader < Loader
 
       lecture.assign_attributes building: lecture_parser.building,
         room:             lecture_parser.room,
-        details_url:      lecture_parser.details_link,
+        details_url:      "#{Settings::COMPASS_ROOT_URL}#{lecture_parser.details_link}",
         reference_number: lecture_parser.reference_number,
         course:           Course.find_or_create_by(code: lecture_parser.course_code),
         campus:           lecture_parser.campus,

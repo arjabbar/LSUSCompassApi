@@ -1,8 +1,8 @@
 module Retreivers
-  class LectureDetails
+  class LectureDetails < Base
     def initialize(url:)
+      super()
       @url = url
-      @url = "#{Settings::COMPASS_ROOT_URL}#{url}" unless Settings::COMPASS_ROOT_URL.in? url
     end
 
     def course_description
@@ -35,16 +35,9 @@ module Retreivers
 
     private
 
-    def scraper
-      @scraper ||= Scrapers::LectureDetails.new page: page
-    end
-
     def load_page url
       browser.get url
     end
 
-    def browser
-      @mech ||= Mechanize.new
-    end
   end
 end

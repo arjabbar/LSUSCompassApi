@@ -13,6 +13,7 @@ gem 'colorize'
 gem 'rufus-scheduler'
 gem 'pry-rails'
 gem 'pry-nav'
+gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
