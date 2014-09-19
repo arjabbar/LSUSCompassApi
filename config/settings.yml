@@ -1,18 +1,18 @@
 development:
   compass_root_url: https://compass.lsus.edu
   compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
-  rate_my_professor_root_url: http://www.ratemyprofessors.com/search.jsp
+  rate_my_professor_root_url: http://www.ratemyprofessors.com
   rate_my_professor_professor_search_url: http://www.ratemyprofessors.com/SelectTeacher.jsp
   rate_my_professor_school_id: 4205
 test:
   compass_root_url: https://compass.lsus.edu
   compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
-  rate_my_professor_root_url: http://www.ratemyprofessors.com/search.jsp
+  rate_my_professor_root_url: http://www.ratemyprofessors.com
   rate_my_professor_professor_search_url: http://www.ratemyprofessors.com/SelectTeacher.jsp
   rate_my_professor_school_id: 4205
 production:
   compass_root_url: https://compass.lsus.edu
   compass_home: https://compass.lsus.edu/FCCSC/registration/coursesearch.jsp
-  rate_my_professor_root_url: http://www.ratemyprofessors.com/search.jsp
+  rate_my_professor_root_url: http://www.ratemyprofessors.com
   rate_my_professor_professor_search_url: http://www.ratemyprofessors.com/SelectTeacher.jsp
   rate_my_professor_school_id: 4205

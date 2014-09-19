@@ -1,7 +1,6 @@
 module Retreivers
   class CompassSearch < Base
     attr_accessor :search_result_page_collection
-    delegate :page, :current_page, :visited?, to: :@mechanize
 
     def initialize
       super

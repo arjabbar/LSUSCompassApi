@@ -1,5 +1,7 @@
 module Retreivers
   class Base
+    attr_reader :browser
+    delegate :current_page, :visited?, to: :browser
 
     def initialize
       check_for_matching_scraper!
@@ -23,8 +25,12 @@ module Retreivers
 
     private
 
+    def page
+      browser.page || @page
+    end
+
     def check_for_matching_scraper!
-      raise "There isn't a scraper matching to #{scraper_class_name} that the retreiver #{self.class} can use." if scraper_class.nil?
+      raise "There isn't a scraper matching to #{scraper_class_name} that the retreiver #{self.class} can use." unless scraper_class.present?
     end
   end
 end

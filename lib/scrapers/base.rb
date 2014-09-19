@@ -22,7 +22,7 @@ module Scrapers
     def parser_class_for sym
       parser_class_name = sym.to_s.singularize.camelize
       parser_class = "Parsers::#{parser_class_name}".safe_constantize
-      raise "There isn't a parser for #{parser_class_name}" if parser_class.blank?
+      raise "There isn't a parser for #{parser_class_name}" unless parser_class.present?
       parser_class
     end
 

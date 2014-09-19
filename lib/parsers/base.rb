@@ -1,7 +1,7 @@
 module Parsers
   class Base
     attr_accessor :node
-    delegate :[], to: :node, allow_nil: true
+    delegate :[], :search, to: :node, allow_nil: true
 
     def initialize node
       @node = node
