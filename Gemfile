@@ -14,6 +14,8 @@ gem 'rufus-scheduler'
 gem 'pry-rails'
 gem 'pry-nav'
 gem 'jquery-rails'
+gem 'rest_client'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
